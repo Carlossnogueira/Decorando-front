@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Madimi+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #7C8C6A;
+    --color-announcement-header: #141312;
+    
+    --color-departments-container: #f5f5f5;
+    --color-departments-text: #535353;
+
+    --color-text-header: #FFFFFF;
+    --color-text-secondary-header: #9A9A9A;
+}

@@ -1,0 +1,117 @@
+header{
+    font-family: 'Jost', sans-serif;
+    color: white;
+}
+
+.announcement{
+    background-color: var( --color-announcement-header);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 2em;
+}
+
+.header-container{
+    background-color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 4em;
+}
+
+.logo{
+    font-family: 'Madimi One', cursive;
+    color: white;
+    font-size: 1.5em;
+}
+
+.search-bar{
+    width: 30%;
+}
+
+.search-input{
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    background-color: white;
+    border-radius: 0.5em;
+    padding: 0.5em;
+}
+
+.search-input input{
+    border: none;
+    outline: none;
+}
+
+.search-input img{
+    width: 1em;
+    height: 1em;
+}
+
+.user-actions{
+    display: flex;
+    gap: 1em;
+}
+
+.user-actions div a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: white;
+}
+
+.user-actions img{
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.departments-container{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: var(--color-departments-container);
+    min-height: 2em;
+}
+
+.departments-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+.departments-list li a{
+    text-decoration: none;
+    color: var(--color-departments-text);
+}
+
+.departments-list{
+    list-style: none;
+}
+
+@media(max-width: 768px){
+    .header-container{
+        flex-direction: column;
+        min-height: 11em;
+        justify-content: space-around;
+    }
+
+    .search-bar{
+        width: 80%;
+    }
+
+    .user-actions{
+        gap: 0.8em;
+    }
+
+    .departments-list{
+        min-height: 64px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1em;
+    }
+}

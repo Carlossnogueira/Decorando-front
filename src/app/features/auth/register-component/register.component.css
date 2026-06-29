@@ -42,8 +42,9 @@
 }
 
 /*Input error*/
-.form-body-input-error  {
-    border: 1px solid red;
+small{
+    font-family: 'Jost', sans-serif;
+    color: rgb(227, 61, 61);
 }
 
 
@@ -53,6 +54,10 @@
     border-radius: 0.5em;
     border: none;
     background-color: var(--color-input-background);
+}
+
+.form-body-input-error  {
+    border: 1px solid red;
 }
 
 .form-footer {

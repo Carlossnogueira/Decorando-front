@@ -1,27 +1,98 @@
 <div class="container">
     <div class="form-container">
+
         <div class="form-header">
             <h1>Criar conta</h1>
             <p>Acompanhe suas compras pela sua conta</p>
         </div>
 
-        <form class="form-body">
-            <label for="username" >Nome:</label>
-            <input type="text" class="form-body-input-error" id="username" name="username" placeholder="João da Silva" minlength="3" maxlength="50" class="form-body-input" required>
+        <form class="form-body" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+
+            <label for="username">Nome completo:</label>
+
+            <input id="username" type="text" placeholder="João da Silva" formControlName="username"
+                class="form-body-input" [class.form-body-input-error]="username?.invalid && username?.touched">
+
+            @if (registerForm.get('username')?.touched) {
+
+                @if (registerForm.get('username')?.errors?.['required']) {
+                    <small>O nome é obrigatório.</small>
+                }
+
+                @if (registerForm.get('username')?.errors?.['minlength']) {
+                    <small>O nome deve possuir pelo menos 3 caracteres.</small>
+                }
+
+                @if (registerForm.get('username')?.errors?.['maxlength']) {
+                    <small>O nome deve possuir no máximo 100 caracteres.</small>
+                }
+
+            }
 
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="exemplo@email.com" class="form-body-input" required>
 
-            <label for="password">Senha:</label>
-            <input type="password" id="password" name="password" placeholder="********" class="form-body-input" required>
+            <input id="email" type="email" placeholder="exemplo@email.com" formControlName="email"
+                [class.form-body-input-error]="email?.invalid && email?.touched" class="form-body-input">
 
-            <label for="confirm-password">Confirmar Senha:</label>
-            <input type="password" id="confirm-password" name="confirm-password" placeholder="********" class="form-body-input" required>
+            @if (registerForm.get('email')?.touched) {
+
+                @if (registerForm.get('email')?.errors?.['required']) {
+                    <small>O e-mail é obrigatório.</small>
+                }
+
+                @if (registerForm.get('email')?.errors?.['email']) {
+                    <small>Informe um e-mail válido.</small>
+                }
+
+                @if (registerForm.get('email')?.errors?.['minlength']) {
+                    <small>O e-mail deve possuir pelo menos 8 caracteres.</small>
+                }
+
+                @if (registerForm.get('email')?.errors?.['maxlength']) {
+                    <small>O e-mail deve possuir no máximo 50 caracteres.</small>
+                }
+
+            }
+
+
+            <label for="password">Confirmar Senha:</label>
+
+            <input id="password" type="password" placeholder="********" formControlName="password"
+                [class.form-body-input-error]="password?.invalid && password?.touched" class="form-body-input">
+
+            @if (registerForm.get('password')?.touched) {
+
+                @if (registerForm.get('password')?.errors?.['required']) {
+                    <small>A senha é obrigatória.</small>
+                }
+
+                @if (registerForm.get('password')?.errors?.['minlength']) {
+                    <small>A senha deve possuir pelo menos 8 caracteres.</small>
+                }
+
+                @if (registerForm.get('password')?.errors?.['maxlength']) {
+                    <small>A senha deve possuir no máximo 50 caracteres.</small>
+                }
+
+            }
 
             <div class="form-footer">
-                <button type="submit">Criar Conta</button>
-                <P>Já possui uma conta? <a href="/login">Entre aqui</a></P>
+
+                <button type="submit" [disabled]="registerForm.invalid">
+
+                    Criar Conta
+
+                </button>
+
+                <p>
+                    Já possui uma conta?
+                    <a href="/login">Entre aqui</a>
+                </p>
+
             </div>
+
         </form>
+
     </div>
 </div>

@@ -5,13 +5,52 @@
             <p>Entre na sua conta para acompanhar suas compras</p>
         </div>
 
-        <form class="form-body">
+        <form class="form-body" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="exemplo@email.com" class="form-body-input" required>
+
+            <input type="email" id="email" formControlName="email" placeholder="exemplo@email.com"
+                class="form-body-input" [class.form-body-input-error]="email?.invalid && email?.touched">
+
+            @if (loginForm.get('email')?.touched) {
+
+            @if (loginForm.get('email')?.errors?.['required']) {
+                <small>O e-mail é obrigatório.</small>
+            }
+
+            @if (loginForm.get('email')?.errors?.['email']) {
+                <small>Informe um e-mail válido.</small>
+            }
+
+            @if (loginForm.get('email')?.errors?.['minlength']) {
+                <small>O e-mail deve possuir pelo menos 8 caracteres.</small>
+            }
+
+            @if (loginForm.get('email')?.errors?.['maxlength']) {
+                <small>O e-mail deve possuir no máximo 50 caracteres.</small>
+            }
+
+            }
 
             <label for="password">Senha:</label>
-            <input type="password" id="password" name="password" placeholder="********" class="form-body-input" required>
+
+            <input type="password" id="password" formControlName="password" placeholder="********"
+                class="form-body-input" [class.form-body-input-error]="password?.invalid && password?.touched">
+
+            @if(loginForm.get('password')?.touched){
+
+            @if (loginForm.get('password')?.errors?.['required']) {
+                <small>A senha é obrigatória.</small>
+            }
+
+            @if (loginForm.get('password')?.errors?.['minlength']) {
+                <small>A senha deve possuir pelo menos 8 caracteres.</small>
+            }
+
+            @if (loginForm.get('password')?.errors?.['maxlength']) {
+                <small>A senha deve possuir no máximo 50 caracteres.</small>
+            }
+            }
 
             <div class="form-footer">
                 <button type="submit">Entrar</button>
